@@ -11,7 +11,7 @@ linkedin.com/in/michael-d-marchese
 
 Senior data leader and solutions architect specializing in data integration, SQL engineering, reporting modernization, and process automation across healthcare and enterprise systems.
 
-Leader of a 7-person distributed data team responsible for migration modernization, reporting frameworks, automation strategy, and enterprise analytics delivery across 25+ organizations.
+Leader of a 7-person distributed data team responsible for migration modernization, reporting frameworks, automation strategy, and enterprise analytics delivery across 25+ organizations. Actively integrates AI tooling and knowledge management systems to scale team output and reduce delivery overhead.
 
 ---
 
@@ -25,6 +25,7 @@ Leader of a 7-person distributed data team responsible for migration modernizati
 - WebFOCUS
 - Kimball Methodology
 - Fabric / Synapse
+- AI-Augmented Workflow Design
 - Leadership & Team Development
 - Public Speaking & Executive Communication
 
@@ -43,6 +44,9 @@ Leader of a 7-person distributed data team responsible for migration modernizati
 - Delivered 100+ operational, ministry, and financial reports
 - Increased migration revenue by 40%
 - Speaker at VitalHub Case Management Summit
+- Designed and deployed a structured internal knowledge base integrating LLM tooling to accelerate onboarding, reduce repeated research effort, and standardize team outputs across 25+ client organizations
+- Built reusable AI-assisted workflows for SQL generation, reporting documentation, and client deliverable production, reducing per-task effort and improving consistency at scale
+- Established prompt engineering standards and AI tooling governance to ensure team-wide adoption of AI productivity tooling within a regulated healthcare context
 
 #### Technical Business Analyst (Aug 2022 – May 2024)
 
