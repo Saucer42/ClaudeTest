@@ -13,7 +13,30 @@ export ANTHROPIC_API_KEY="sk-ant-..."
 
 ---
 
-## Workflow
+## Weekly Job Search Workflow
+
+```bash
+python tools/job_board.py
+```
+
+Opens a local dashboard at `http://localhost:5000` with job listings fetched from public sources (RemoteOK + any you add manually). From there:
+
+1. **Browse cards** — click "Show more" to read the full description
+2. **Add jobs manually** — click "+ Add Job Manually" to paste in a role from LinkedIn, Indeed, etc.
+3. **👍 Approve** — adds the job to `tracker.md` with `👍 Approved` status and saves the JD automatically
+4. **Skip** — hides the card for this session
+
+Once you've approved jobs, run the auto-apply pipeline:
+```bash
+python tools/apply.py --dry-run   # preview materials first
+python tools/apply.py             # generate tailored resume + cover letter, open URLs
+```
+
+> Use `--no-fetch` to reuse today's cached results without hitting the API again.
+
+---
+
+## Full Workflow
 
 ### 1. Add your resume
 Your resume lives at `resume/resume.md`. Edit it directly — all AI tools read from here.

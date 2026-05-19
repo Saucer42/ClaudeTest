@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+
+# Job search cache (daily snapshots, don't need in git)
+job-search/results_*.json
