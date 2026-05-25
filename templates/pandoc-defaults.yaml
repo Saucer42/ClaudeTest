@@ -1,0 +1,9 @@
+from: markdown
+pdf-engine: xelatex
+variables:
+  geometry: margin=0.75in
+  fontsize: 11pt
+  mainfont: Helvetica
+  colorlinks: true
+  linkcolor: black
+  urlcolor: blue

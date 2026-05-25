@@ -1,0 +1,21 @@
+[project]
+name = "job-search"
+version = "0.1.0"
+description = "End-to-end job-search workflow: scrape, triage, tailor, submit, track."
+requires-python = ">=3.11"
+dependencies = [
+  "anthropic",
+  "playwright",
+  "beautifulsoup4",
+  "httpx",
+  "pyyaml",
+  "python-frontmatter",
+  "jinja2",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = []

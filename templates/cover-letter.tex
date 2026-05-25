@@ -1,0 +1,33 @@
+\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$]{letter}
+
+\usepackage{fontspec}
+\usepackage[$if(geometry)$$geometry$$else$margin=1in$endif$]{geometry}
+\usepackage{hyperref}
+\usepackage{parskip}
+
+$if(mainfont)$
+\setmainfont{$mainfont$}
+$endif$
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$
+}
+
+\signature{$if(sender)$$sender$$else$$endif$}
+\address{$if(sender-address)$$sender-address$$else$$endif$}
+
+\begin{document}
+
+\begin{letter}{$if(recipient)$$recipient$$else$Hiring Team$endif$}
+
+\opening{$if(salutation)$$salutation$$else$Dear Hiring Team,$endif$}
+
+$body$
+
+\closing{$if(closing)$$closing$$else$Sincerely,$endif$}
+
+\end{letter}
+
+\end{document}

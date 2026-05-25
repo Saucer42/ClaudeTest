@@ -4,7 +4,16 @@ __pycache__/
 *.pyo
 .venv/
 venv/
-.env
 
-# Job search cache (daily snapshots, don't need in git)
-job-search/results_*.json
+# Secrets
+.env
+.envrc
+
+# Playwright auth state
+playwright/.auth/
+*.storage.json
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/

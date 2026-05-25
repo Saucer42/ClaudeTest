@@ -1,0 +1,42 @@
+\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$]{article}
+
+\usepackage{fontspec}
+\usepackage[$if(geometry)$$geometry$$else$margin=0.75in$endif$]{geometry}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{parskip}
+
+$if(mainfont)$
+\setmainfont{$mainfont$}
+$endif$
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$
+}
+
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titleformat{\subsection}{\bfseries}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{6pt}{2pt}
+
+\setlist[itemize]{leftmargin=*,topsep=2pt,itemsep=1pt}
+
+\pagenumbering{gobble}
+
+\begin{document}
+
+$if(title)$
+\begin{center}
+{\LARGE \textbf{$title$}}\\[2pt]
+$if(subtitle)$$subtitle$\\[2pt]$endif$
+$if(contact)$$contact$$endif$
+\end{center}
+\vspace{4pt}
+$endif$
+
+$body$
+
+\end{document}
