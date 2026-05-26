@@ -1,0 +1,66 @@
+name: Submit Job Application
+
+# Triggered manually from GitHub → Actions → Submit Job Application → Run workflow.
+# Step 1: run with "Dry run" checked (default) to fill the form and capture a screenshot.
+# Step 2: review the screenshot in the Artifacts section of the Actions run.
+# Step 3: re-run with "Dry run" unchecked to actually submit and update the tracker.
+
+on:
+  workflow_dispatch:
+    inputs:
+      company:
+        description: 'Company name — must match a "👍 Approved" entry in tracker.md'
+        required: true
+        type: string
+      dry_run:
+        description: 'Dry run — fill form and save screenshot, but do NOT click Submit'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install playwright fpdf2
+          playwright install chromium --with-deps
+
+      - name: Fill form (and submit if not dry run)
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python tools/gha_submit.py --company "${{ inputs.company }}" --dry-run
+          else
+            python tools/gha_submit.py --company "${{ inputs.company }}"
+          fi
+
+      - name: Upload screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-${{ inputs.company }}-run${{ github.run_number }}
+          path: applications/screenshots/
+          retention-days: 30
+
+      - name: Commit tracker update and artifacts
+        if: inputs.dry_run == false
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add applications/tracker.md applications/screenshots/ applications/pdfs/
+          git diff --staged --quiet || git commit -m "✉️ Applied to ${{ inputs.company }} via GitHub Actions [skip ci]"
+          git push origin HEAD
