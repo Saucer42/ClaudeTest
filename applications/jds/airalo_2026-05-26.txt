@@ -1,0 +1,35 @@
+Data Engineering Manager
+Airalo — Remote (Canada/USA)
+Source: jobs.lever.co/airalo/0b5a11cf-debd-499f-a99c-41b2b6cbd92d
+
+About Airalo
+Airalo is the world's first eSIM store that helps people connect to the internet in 200+ countries and regions without the hassle of dealing with high roaming fees. Airalo connects its partners with millions of global travelers through its innovative and growing network of eSIMs.
+
+About the Role
+We are looking for a Data Engineering Manager to lead the foundational backend of our data organization. You will manage and mentor a team of data engineers, drive the architecture and delivery of our data infrastructure, and partner with analytics, product, and business teams to ensure high-quality data is available across the organization.
+
+Responsibilities
+- Lead, mentor, and grow a team of 5–8 data engineers across distributed time zones
+- Own the architecture and roadmap for our data platform (pipelines, warehousing, orchestration)
+- Partner with analytics, product, and business stakeholders to define and deliver data requirements
+- Design and implement scalable ELT/ETL pipelines and data models
+- Establish data quality frameworks, monitoring, and SLAs
+- Drive the adoption of best practices in data engineering (testing, documentation, CI/CD)
+- Collaborate with the Data Director on hiring, team development, and performance management
+- Champion metadata-driven approaches to reduce pipeline development overhead
+- Oversee migration and modernization of legacy data systems
+
+Requirements
+- 5+ years of data engineering experience, with 2+ years in a leadership or management role
+- Strong proficiency in SQL and at least one data pipeline framework (dbt, Airflow, Spark, etc.)
+- Experience designing and scaling cloud data warehouses (Snowflake, BigQuery, Redshift, or Azure Synapse)
+- Demonstrated ability to lead distributed teams and manage cross-functional stakeholders
+- Experience with data migration projects and large-scale dataset handling (100M+ records)
+- Familiarity with healthcare, fintech, or high-growth SaaS data environments is a plus
+- Strong communication skills — ability to present technical concepts to executive audiences
+- Experience integrating AI/LLM tooling into engineering workflows is a plus
+
+Nice to Have
+- Experience with Databricks, Delta Lake, or modern lakehouse architectures
+- Background in metadata-driven ETL frameworks
+- Familiarity with Kimball dimensional modeling methodology

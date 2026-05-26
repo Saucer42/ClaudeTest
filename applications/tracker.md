@@ -20,7 +20,7 @@
 
 | Date Applied | Company | Role | Job URL | Status | Cover Letter | Follow-up Date | Notes |
 |---|---|---|---|---|---|---|---|
-| YYYY-MM-DD | Example Corp | Software Engineer | [Link](#) | 📝 Preparing | [draft](../cover-letters/generated/) | — | — |
+| 2026-05-26 | Airalo | Data Engineering Manager | [Lever](https://jobs.lever.co/airalo/0b5a11cf-debd-499f-a99c-41b2b6cbd92d) | 👍 Approved | [cover letter](../cover-letters/generated/airalo_20260526_120000.md) | — | Test run for GitHub Actions workflow |
 
 ---
 
