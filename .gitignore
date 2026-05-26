@@ -8,3 +8,10 @@ venv/
 
 # Job search cache (daily snapshots, don't need in git)
 job-search/results_*.json
+
+# Obsidian local config (per-user, not shared)
+.obsidian/
+
+# OS junk
+.DS_Store
+Thumbs.db
