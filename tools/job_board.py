@@ -46,6 +46,40 @@ REMOTEOK_TAGS = [
     "data-engineer", "data-architect", "reporting", "business-intelligence",
 ]
 
+# Greenhouse public board slugs — no auth needed.
+# Find a company's slug at: https://boards.greenhouse.io/<slug>/jobs
+# Invalid slugs are silently skipped.
+GREENHOUSE_COMPANIES = [
+    "shopify",        # Toronto-based, major tech
+    "databricks",     # data lakehouse platform
+    "fivetran",       # ELT/data integration
+    "dbt-labs",       # data transformation
+    "snowflake",      # cloud data warehouse
+    "palantir",       # enterprise data analytics
+    "thoughtspot",    # BI / analytics
+    "atscale",        # semantic layer / BI
+    "samsara",        # data-heavy enterprise
+    "benchling",      # life sciences data
+    "commure",        # healthcare data
+    "veeva",          # life sciences SaaS
+]
+
+# Lever public posting slugs — no auth needed.
+# Find a company's slug at: https://jobs.lever.co/<slug>
+# Invalid slugs are silently skipped.
+LEVER_COMPANIES = [
+    "cityblock",      # healthcare analytics
+    "hims",           # health tech
+    "ro",             # digital health
+    "truepill",       # healthcare data
+    "collective-health",  # health plan analytics
+    "arcadia",        # healthcare data platform
+    "innovaccer",     # healthcare analytics
+    "chartboost",     # data / analytics
+    "amplitude",      # product analytics
+    "heap",           # analytics platform
+]
+
 RELEVANCE_KEYWORDS = [
     "data", "sql", "analytics", "reporting", "integration", "etl",
     "bi ", "business intelligence", "data engineer", "data manager",
@@ -97,6 +131,73 @@ def fetch_remoteok(tags: list[str]) -> list[dict]:
     return jobs
 
 
+def fetch_greenhouse(companies: list[str]) -> list[dict]:
+    jobs = []
+    for slug in companies:
+        try:
+            resp = requests.get(
+                f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs",
+                params={"content": "true"},
+                headers={"User-Agent": "JobSearchDashboard/1.0"},
+                timeout=10,
+            )
+            if resp.status_code != 200:
+                continue
+            for item in resp.json().get("jobs", []):
+                offices = item.get("offices", [])
+                location = ", ".join(o.get("name", "") for o in offices if o.get("name")) or "Remote"
+                departments = [d["name"] for d in item.get("departments", []) if d.get("name")]
+                jobs.append({
+                    "id": f"gh_{item['id']}",
+                    "title": item.get("title", ""),
+                    "company": slug.replace("-", " ").title(),
+                    "location": location,
+                    "url": item.get("absolute_url", ""),
+                    "description": item.get("content", ""),
+                    "tags": departments,
+                    "salary": "",
+                    "date": item.get("updated_at", ""),
+                    "source": "Greenhouse",
+                    "status": "new",
+                })
+        except Exception:
+            continue
+    return jobs
+
+
+def fetch_lever(companies: list[str]) -> list[dict]:
+    jobs = []
+    for slug in companies:
+        try:
+            resp = requests.get(
+                f"https://api.lever.co/v0/postings/{slug}",
+                params={"mode": "json"},
+                headers={"User-Agent": "JobSearchDashboard/1.0"},
+                timeout=10,
+            )
+            if resp.status_code != 200:
+                continue
+            for item in resp.json():
+                cats = item.get("categories", {})
+                tag = cats.get("team", "")
+                jobs.append({
+                    "id": f"lv_{item['id']}",
+                    "title": item.get("text", ""),
+                    "company": slug.replace("-", " ").title(),
+                    "location": cats.get("location", "Remote"),
+                    "url": item.get("hostedUrl", ""),
+                    "description": item.get("descriptionPlain") or item.get("description", ""),
+                    "tags": [tag] if tag else [],
+                    "salary": "",
+                    "date": str(item.get("createdAt", "")),
+                    "source": "Lever",
+                    "status": "new",
+                })
+        except Exception:
+            continue
+    return jobs
+
+
 def is_relevant(job: dict) -> bool:
     text = " ".join([
         job.get("title", ""),
@@ -116,7 +217,17 @@ def load_or_fetch(force_fetch: bool = True) -> list[dict]:
 
     print("Fetching job listings from RemoteOK...")
     raw = fetch_remoteok(REMOTEOK_TAGS)
-    jobs = [j for j in raw if is_relevant(j)]
+    print(f"  RemoteOK: {len(raw)} raw results")
+
+    print("Fetching job listings from Greenhouse...")
+    gh = fetch_greenhouse(GREENHOUSE_COMPANIES)
+    print(f"  Greenhouse: {len(gh)} raw results")
+
+    print("Fetching job listings from Lever...")
+    lv = fetch_lever(LEVER_COMPANIES)
+    print(f"  Lever: {len(lv)} raw results")
+
+    jobs = [j for j in raw + gh + lv if is_relevant(j)]
 
     # Deduplicate
     seen: set[str] = set()
