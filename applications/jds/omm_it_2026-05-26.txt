@@ -1,0 +1,74 @@
+Senior Data Architect – Microsoft Fabric Focus
+Omm IT Solutions (also posted as "Consulting Senior Data Architect")
+Posted: April 3, 2026
+Location: 100% Remote — Canada (EST/CST time zones preferred)
+
+Sources:
+- https://www.remoterocketship.com/company/ommincorp/jobs/senior-data-architect-microsoft-fabric-focus-canada-remote/
+- https://ommincorp.zohorecruit.com/jobs/Careers/465202000502691802/Consulting-Senior-Data-Architect-Microsoft-Fabric-Focus-
+- https://remotive.com/remote/jobs/data/consulting-senior-data-architect-4238741
+
+---
+
+ROLE SUMMARY
+
+Architect-level role responsible for designing and standardizing an enterprise
+Microsoft Fabric data platform. Defines the target-state architecture, builds
+reusable patterns for ingestion / transformation / serving, and partners with
+digital product teams to align Fabric capabilities to business outcomes.
+
+---
+
+REQUIREMENTS
+
+- 10+ years in data architecture / data engineering roles, including
+  platform-scale design
+- Proven Microsoft Fabric production implementations
+- Deep hands-on expertise in:
+    - Data Engineering on Spark
+    - Data Factory (pipelines)
+    - Real-time analytics / Event Streams
+- Experience implementing and governing data modeling standards and
+  data governance
+- Strong DevOps fluency: CI/CD patterns and operational delivery
+- Background in modern data warehousing (Azure SQL DW / Synapse adjacent)
+
+---
+
+KEY RESPONSIBILITIES
+
+- Architect and implement Fabric solutions for data engineering (Spark),
+  Data Factory pipelines, and real-time analytics / Event Streams aligned
+  to digital product needs
+- Build and standardize Fabric patterns for ingestion, transformation, and
+  serving across workloads including operational analytics, near-real-time,
+  batch, and data science / ML
+- Produce and maintain the target-state architecture for Fabric-based data
+  platform capabilities
+- Define domain-oriented data product patterns, including how shared and
+  enterprise datasets are curated and reused
+- Govern data modeling standards across the platform
+
+---
+
+COMPENSATION
+
+Not disclosed in posting.
+
+---
+
+APPLICATION
+
+Apply via Remote Rocketship link (primary) or the Zoho Recruit listing on
+Omm IT's careers page.
+
+---
+
+NOTES
+
+- JD content above is synthesized from public search excerpts; anti-bot
+  restrictions on the source pages prevented a full page fetch. Re-verify
+  the live JD before submitting.
+- "Consulting" variant appears to be the same role surfaced under Omm's
+  consulting practice. Confirm during screening whether this is FTE or
+  contract.

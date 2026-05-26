@@ -20,7 +20,7 @@
 
 | Date Applied | Company | Role | Job URL | Status | Cover Letter | Follow-up Date | Notes |
 |---|---|---|---|---|---|---|---|
-| YYYY-MM-DD | Example Corp | Software Engineer | [Link](#) | 📝 Preparing | [draft](../cover-letters/generated/) | — | — |
+| — | Omm IT Solutions | Senior Data Architect – Microsoft Fabric Focus | [Link](https://www.remoterocketship.com/company/ommincorp/jobs/senior-data-architect-microsoft-fabric-focus-canada-remote/) | 👍 Approved | [draft](../cover-letters/generated/omm_it_2026-05-26.md) | — | Remote Canada (EST/CST). Materials generated 2026-05-26. JD: [omm_it_2026-05-26.txt](jds/omm_it_2026-05-26.txt). Tailored resume: [omm_it_2026-05-26.md](resumes/omm_it_2026-05-26.md). Comp not disclosed. |
 
 ---
 
