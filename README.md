@@ -1,130 +1,73 @@
-# Job Search Hub
+# Personal Knowledge Hub
 
-A version-controlled job search system with AI-powered resume tailoring, cover letter generation, and auto-apply.
+A version-controlled knowledge base maintained by an LLM, with a job-search workflow layered on top.
+
+Two systems live here:
+
+1. **The wiki** (`raw/` + `wiki/`) — drop sources into `raw/`, ask Claude to ingest them, and an interlinked Markdown wiki gets built and maintained for you. See [`CLAUDE.md`](CLAUDE.md) for the full schema.
+2. **The job-search hub** (`resume/`, `applications/`, `cover-letters/`, `interview-prep/`, `tools/`) — the original job board + auto-apply pipeline. Still works exactly as before.
+
+The wiki informs the job search (company pages deepen tailored cover letters, role pages reveal patterns across postings). Neither system depends on the other.
 
 ---
 
-## Setup
+## The Wiki
+
+### How it works
+
+- **You curate, Claude maintains.** Drop articles, book notes, transcripts, journal entries into `raw/`. Tell Claude to ingest them. It reads, summarizes, and weaves the new content into the existing wiki — updating entity pages, flagging contradictions, growing cross-references.
+- **Three operations**: `ingest` (add a source), `query` (ask a question), `lint` (health-check).
+- **Two index files** keep the wiki navigable: `wiki/index.md` (content catalog) and `wiki/log.md` (chronological event log).
+
+See [`CLAUDE.md`](CLAUDE.md) for the full pattern, page types, frontmatter conventions, and workflow specs.
+
+### Quick examples
+
+In a Claude Code session:
+
+- *"I dropped an article in `raw/articles/`. Ingest it."*
+- *"What do we know about Microsoft Fabric so far?"*
+- *"Compare VitalHub's stack with what we've seen at Shopify."*
+- *"Lint the wiki — what's missing?"*
+
+### Recommended viewer
+
+Use [Obsidian](https://obsidian.md) pointed at this repo as a vault. The wiki uses Obsidian-style `[[wikilinks]]`, YAML frontmatter, and Title-Case filenames so the graph view, backlinks, and Dataview queries all work out of the box.
+
+---
+
+## The Job-Search Hub
+
+### Setup
 
 ```bash
 pip install -r requirements.txt
-export ANTHROPIC_API_KEY="sk-ant-..."
+export ANTHROPIC_API_KEY="sk-ant-..."   # only needed for the Python tools
 ```
 
----
-
-## Weekly Job Search Workflow
+### Weekly workflow
 
 ```bash
 python tools/job_board.py
 ```
 
-Opens a local dashboard at `http://localhost:5000` with job listings fetched from public sources (RemoteOK + any you add manually). From there:
+Opens a local dashboard at `http://localhost:5000` with listings from RemoteOK + whatever you paste in manually.
 
-1. **Browse cards** — click "Show more" to read the full description
-2. **Add jobs manually** — click "+ Add Job Manually" to paste in a role from LinkedIn, Indeed, etc.
-3. **👍 Approve** — adds the job to `tracker.md` with `👍 Approved` status and saves the JD automatically
+1. **Browse cards** — click "Show more" for the full description
+2. **Add jobs manually** — paste in roles from LinkedIn, Indeed, etc.
+3. **👍 Approve** — adds to `applications/tracker.md` and saves the JD to `applications/jds/`
 4. **Skip** — hides the card for this session
 
-Once you've approved jobs, run the auto-apply pipeline:
-```bash
-python tools/apply.py --dry-run   # preview materials first
-python tools/apply.py             # generate tailored resume + cover letter, open URLs
-```
+Then in a Claude Code session, ask Claude to generate tailored materials. Optionally, ingest the JD as a wiki source first so company/role context compounds.
 
-> Use `--no-fetch` to reuse today's cached results without hitting the API again.
-
----
-
-## Full Workflow
-
-### 1. Add your resume
-Your resume lives at `resume/resume.md`. Edit it directly — all AI tools read from here.
-
-### 2. Bookmark a job
-Add a row to `applications/tracker.md` → Pipeline section.
-
-### 3. Save the job description
-```
-applications/jds/<company_slug>_<role_or_date>.txt
-```
-Plain text. Paste the full JD so you have it after the posting comes down.
-
-### 4. Get tailoring suggestions
-```bash
-python tools/tailor_resume.py --job "applications/jds/acme_engineer.txt" --company "Acme" --role "Data Engineer"
-```
-Outputs: match score, key gaps, keywords to add, bullet rewrites, revised summary, ATS tips.
-
-### 5. Generate a cover letter
-```bash
-python tools/generate_cover_letter.py --job "applications/jds/acme_engineer.txt" --company "Acme" --role "Data Engineer"
-```
-Streams the letter to the terminal and saves it to `cover-letters/generated/`.
-
-### 6. Approve and auto-apply
-Once you've reviewed the materials:
-1. Change the job's status in `tracker.md` to `👍 Approved`
-2. Run:
+If you have API access, the Python pipeline also runs end-to-end:
 
 ```bash
-python tools/apply.py
+python tools/apply.py --dry-run   # preview materials
+python tools/apply.py             # generate + open URLs + update tracker
 ```
 
-The script will:
-- Find all `👍 Approved` rows in the tracker
-- Generate a tailored resume (saved to `applications/resumes/`)
-- Generate a tailored cover letter (saved to `cover-letters/generated/`)
-- Open the job URL in your browser (or send via email if the URL is an email address)
-- Update the tracker status to `✉️ Applied`
-
-**Dry run (generate files only, don't submit or update tracker):**
-```bash
-python tools/apply.py --dry-run
-```
-
-**Process a single company:**
-```bash
-python tools/apply.py --company "Acme"
-```
-
-**Email applications** (optional) — set these env vars and use an email address as the Job URL in the tracker:
-```
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=you@gmail.com
-SMTP_PASS=your-app-password
-SMTP_FROM=you@gmail.com
-```
-
----
-
-## Directory Structure
-
-```
-.
-├── resume/
-│   └── resume.md                   # Your master resume (edit this)
-├── cover-letters/
-│   ├── template.md                 # Manual template
-│   └── generated/                  # AI-generated cover letters (auto-saved here)
-├── applications/
-│   ├── tracker.md                  # Application pipeline + status tracking
-│   ├── checklist.md                # Per-application checklist template
-│   ├── jds/                        # Job description archive (.txt files)
-│   └── resumes/                    # Tailored resumes generated by apply.py
-├── interview-prep/
-│   └── notes.md                    # STAR stories, company research, questions to ask
-├── tools/
-│   ├── generate_cover_letter.py    # Generate a single cover letter
-│   ├── tailor_resume.py            # Get resume tailoring suggestions
-│   └── apply.py                    # Auto-apply workflow (reads tracker, generates, submits)
-└── requirements.txt
-```
-
----
-
-## Status Legend
+### Status legend
 
 | Status | Meaning |
 |--------|---------|
@@ -138,3 +81,42 @@ SMTP_FROM=you@gmail.com
 | ✅ Offer | Offer received |
 | ❌ Rejected | Not moving forward |
 | 🚫 Withdrawn | Withdrawn |
+
+---
+
+## Directory Structure
+
+```
+.
+├── CLAUDE.md                      # the schema — read this first
+├── README.md                      # this file
+├── requirements.txt
+│
+├── raw/                           # IMMUTABLE source documents (you curate)
+│   ├── articles/
+│   ├── books/
+│   ├── journal/
+│   ├── transcripts/
+│   ├── assets/                    # images
+│   └── misc/
+│
+├── wiki/                          # LLM-maintained knowledge base
+│   ├── index.md                   # catalog of every page
+│   ├── log.md                     # chronological event log
+│   ├── _templates/                # page-type templates
+│   ├── self/                      # Michael (profile, goals, skills)
+│   ├── people/
+│   ├── companies/
+│   ├── roles/
+│   ├── concepts/
+│   ├── topics/
+│   ├── sources/                   # one summary page per ingested raw doc
+│   └── synthesis/                 # higher-order analyses
+│
+├── resume/                        # job-search: master resume
+├── cover-letters/                 # job-search: template + generated letters
+├── applications/                  # job-search: tracker, JDs, tailored resumes
+├── interview-prep/                # job-search: STAR stories, prep notes
+├── job-search/                    # job-search: cached results (gitignored)
+└── tools/                         # job-search: Python scripts
+```
