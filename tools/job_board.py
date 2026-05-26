@@ -554,16 +554,21 @@ def main():
     global JOBS
     parser = argparse.ArgumentParser(description="Job search dashboard")
     parser.add_argument("--no-fetch", action="store_true", help="Use cached results")
-    parser.add_argument("--port", type=int, default=5000)
+    parser.add_argument("--port", type=int, default=None)
     args = parser.parse_args()
+
+    import os
+    port = args.port or int(os.environ.get("PORT", 5000))
+    is_local = not os.environ.get("PORT")
 
     JOBS = load_or_fetch(force_fetch=not args.no_fetch)
 
-    url = f"http://localhost:{args.port}"
+    url = f"http://localhost:{port}"
     print(f"\nDashboard: {url}")
     print("Ctrl+C to stop.\n")
-    threading.Timer(1.2, lambda: webbrowser.open(url)).start()
-    app.run(port=args.port, debug=False, use_reloader=False)
+    if is_local:
+        threading.Timer(1.2, lambda: webbrowser.open(url)).start()
+    app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
 
 
 if __name__ == "__main__":
