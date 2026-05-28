@@ -11,7 +11,7 @@ linkedin.com/in/michael-d-marchese
 
 Senior data leader and solutions architect specializing in data integration, SQL engineering, reporting modernization, and process automation across healthcare and enterprise systems.
 
-Leader of a 7-person distributed data team responsible for migration modernization, reporting frameworks, automation strategy, and enterprise analytics delivery across 25+ organizations. Actively integrates AI tooling and knowledge management systems to scale team output and reduce delivery overhead.
+Leader of a 7-person distributed data team responsible for migration modernization, reporting frameworks, automation strategy, and enterprise analytics delivery across over 100 organizations across 4 product lines. Actively integrates AI tooling and knowledge management systems to scale team output and reduce delivery overhead.
 
 ---
 

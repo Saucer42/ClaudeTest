@@ -9,7 +9,7 @@ Toronto, Ontario
 
 Senior data leader and systems architect with deep expertise in AI-augmented workflow design, large-scale data integration, and building scalable data infrastructure across enterprise environments.
 
-Led a 7-person distributed data team delivering mission-critical data systems across 25+ client organizations, with a consistent focus on automation, reusability, and intelligent tooling. Designed and deployed internal knowledge management systems powered by LLMs, established prompt engineering governance, and built AI-assisted production workflows that operate at scale. Combines strong SQL engineering foundations with a systems-design mindset — architecting metadata-driven frameworks and multi-tier data pipelines built for reliability, consistency, and growth.
+Led a 7-person distributed data team delivering mission-critical data systems across over 100 organizations across 4 product lines, with a consistent focus on automation, reusability, and intelligent tooling. Designed and deployed internal knowledge management systems powered by LLMs, established prompt engineering governance, and built AI-assisted production workflows that operate at scale. Combines strong SQL engineering foundations with a systems-design mindset — architecting metadata-driven frameworks and multi-tier data pipelines built for reliability, consistency, and growth.
 
 ---
 
