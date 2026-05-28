@@ -34,7 +34,11 @@ Leader of a 7-person distributed data team responsible for migration modernizati
 ## Professional Experience
 
 ### VitalHub Corp.
-#### Director, Reporting, Analytics & Technical Implementation (May 2024 – Present)
+#### Director, Reporting, Analytics & Technical Implementation (May 2026 – Present)
+
+- Promoted to Director overseeing cross-functional reporting, analytics, and technical implementation strategy across 25+ client organizations
+
+#### Manager, Data Integration & Reporting Solutions (May 2024 – May 2026)
 
 - Lead domestic and offshore reporting/data integration teams
 - Architected 3-tier migration model reducing timelines by 30%

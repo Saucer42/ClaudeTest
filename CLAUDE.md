@@ -8,7 +8,7 @@ It captures the full context of this project so work can resume immediately.
 ## Who This Is For
 
 **Michael Marchese** — Toronto-based senior data leader.
-- Current role: Director, Reporting, Analytics & Technical Implementation at VitalHub Corp (May 2024–Present)
+- Current role: Director, Reporting, Analytics & Technical Implementation at VitalHub Corp (May 2026–Present)
 - 7-person distributed team, 25+ client organizations, healthcare/enterprise domain
 - Key skills: SQL Server (T-SQL), Data Migration Architecture, Metadata-Driven ETL, WebFOCUS, Fabric/Synapse, Kimball, AI-Augmented Workflow Design
 - Targeting: Manager/Director AND Senior IC/Architect roles, any industry, any location (Toronto, remote Canada, remote NA)
