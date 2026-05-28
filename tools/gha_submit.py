@@ -253,7 +253,22 @@ def fill_lever(page, url: str, resume_pdf: Path, cover_letter_md: Path, dry_run:
     _fill(page, "input[name='phone']",          MICHAEL["phone"])
     _fill(page, "input[name='org']",            MICHAEL["current_org"])
     _fill(page, "input[name='urls[LinkedIn]']", MICHAEL["linkedin"])
-    _fill(page, "input[name='location']",       MICHAEL["location"])
+
+    # Location — Lever uses several different field names across companies
+    for sel in [
+        "input[name='location']",
+        "input[name='currentLocation']",
+        "input[placeholder*='location' i]",
+        "input[placeholder*='city' i]",
+    ]:
+        try:
+            el = page.locator(sel).first
+            if el.count():
+                el.fill(MICHAEL["location"])
+                print("  Location filled")
+                break
+        except Exception:
+            pass
 
     try:
         resume_input = page.locator("input[type='file']").first
@@ -263,16 +278,23 @@ def fill_lever(page, url: str, resume_pdf: Path, cover_letter_md: Path, dry_run:
     except Exception as exc:
         print(f"  Resume upload failed: {exc}")
 
+    # Cover letter — only fill if a dedicated comments/cover-letter textarea exists.
+    # Do NOT fall back to a generic textarea selector — Lever uses textareas for
+    # custom questions and a greedy match will paste the letter into the wrong field.
     text = _strip_frontmatter(cover_letter_md.read_text())
-    for sel in ["textarea[name='comments']", "textarea[data-field='comments']", "textarea"]:
+    cl_filled = False
+    for sel in ["textarea[name='comments']", "textarea[data-field='comments']"]:
         try:
             el = page.locator(sel).first
             if el.count():
                 el.fill(text)
                 print("  Cover letter filled")
+                cl_filled = True
                 break
         except Exception:
             pass
+    if not cl_filled:
+        print("  No dedicated cover letter field found — skipping (paste manually if needed)")
 
     if not dry_run:
         _click_submit(page)
