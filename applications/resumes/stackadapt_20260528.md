@@ -42,7 +42,7 @@ Led a 7-person distributed data team delivering mission-critical data systems ac
 ## Professional Experience
 
 ### VitalHub Corp.
-#### Manager, Data Integration & Reporting Solutions (May 2024 – Present)
+#### Director, Reporting, Analytics & Technical Implementation (May 2024 – Present)
 
 **AI Systems & Tooling**
 - Designed and deployed a structured internal knowledge base integrating LLM tooling to accelerate onboarding, eliminate repeated research effort, and standardize outputs across a 7-person team serving 25+ client organizations
