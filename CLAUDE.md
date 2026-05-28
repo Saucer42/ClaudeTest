@@ -189,6 +189,26 @@ Could add: Workopolis, BuiltIn Toronto, RSS feeds from niche boards.
 `apply.py` has SMTP scaffolding but it's untested.
 Env vars needed: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`
 
+### 4. "Browse As Me" — Authenticated Browser Automation
+Claude is blocked (403) on LinkedIn, StackAdapt/Cloudflare sites, and other authenticated job boards.
+Goal: let Claude browse as Michael using saved session credentials.
+
+**Plan:**
+- `tools/browse.py` — Playwright scraper with `storageState` support + Browserbase fallback
+- `tools/save_auth.py` — one-time headed login script that captures and saves browser session per site
+- `.github/workflows/browse-as-me.yml` — parameterized GHA workflow (inputs: `url`, `output_file`)
+- Saved auth state stored as encrypted GitHub Actions secrets (one per site: LinkedIn, etc.)
+
+**For LinkedIn specifically:** evaluate `linkedin-api` Python library vs. cookie capture approach.
+Note: LinkedIn TOS prohibits scraping — keep usage low-volume (equivalent to manual browsing).
+
+**For heavy bot-detection sites:** use Browserbase (already in CLAUDE.md).
+Secrets needed: `BROWSERBASE_API_KEY`, `BROWSERBASE_PROJECT_ID`
+
+### 5. Browserbase Integration
+Already referenced in Workday section. Generalize for any site with aggressive bot-detection.
+Secrets needed: `BROWSERBASE_API_KEY`, `BROWSERBASE_PROJECT_ID`
+
 ---
 
 ## How to Resume This Session
