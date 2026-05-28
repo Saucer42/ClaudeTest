@@ -163,14 +163,17 @@ Optional (for future Browserbase integration):
 - **JDs saved to `applications/jds/<slug>_<date>.txt`** — naming convention used by gha_submit.py
 - **Claude API model**: `claude-opus-4-7` with `thinking: {"type": "adaptive"}`
 - **Prompt caching**: resume content cached via `cache_control: {"type": "ephemeral"}`
+- **Salary expectation**: $140,000 – $170,000 CAD — set in `MICHAEL` dict in `tools/gha_submit.py`
+- **Target geography**: Remote (Canada), Remote (North America), or Toronto/Ontario — avoid roles requiring EU/UK work authorization
+- **Automation tested**: Lever form dry-run confirmed working (Airalo, May 2026) — name, email, phone, location, company, LinkedIn, resume upload, country, salary, remote/visa dropdowns all filled automatically
 
 ---
 
 ## Git
 
-- **Branch**: `claude/optimistic-archimedes-D8GIV`
+- **Branch**: `main`
 - **Remote**: `saucer42/claudetest`
-- All work goes to this branch. Do not push to main without Michael's instruction.
+- All work goes to `main`. The feature branch `claude/optimistic-archimedes-D8GIV` is retired.
 
 ---
 
