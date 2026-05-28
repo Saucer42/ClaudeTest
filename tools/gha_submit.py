@@ -69,7 +69,10 @@ def find_job(company: str) -> dict:
         if comp.lower() in ("company", "---"):
             continue
         if company.lower() in comp.lower():
-            return {"company": comp, "role": role, "url": url}
+            # Strip Markdown link syntax: [text](url) → url
+            md_link = re.match(r"\[.*?\]\((.*?)\)", url)
+            clean_url = md_link.group(1) if md_link else url
+            return {"company": comp, "role": role, "url": clean_url}
     return {}
 
 
