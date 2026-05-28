@@ -43,14 +43,18 @@ APPROVED_STATUS = "👍 Approved"
 APPLIED_STATUS  = "✉️ Applied"
 
 MICHAEL = {
-    "first_name":  "Michael",
-    "last_name":   "Marchese",
-    "full_name":   "Michael Marchese",
-    "email":       "Michael.Marchese92@gmail.com",
-    "phone":       "647-284-0570",
-    "linkedin":    "https://linkedin.com/in/michael-d-marchese",
-    "location":    "Toronto, ON",
-    "current_org": "VitalHub Corp",
+    "first_name":    "Michael",
+    "last_name":     "Marchese",
+    "full_name":     "Michael Marchese",
+    "email":         "Michael.Marchese92@gmail.com",
+    "phone":         "647-284-0570",
+    "linkedin":      "https://linkedin.com/in/michael-d-marchese",
+    "location":      "Toronto, ON",
+    "current_org":   "VitalHub Corp",
+    "country":       "Canada",
+    "visa_sponsor":  "No",
+    "remote_ok":     "Yes",
+    "salary":        "$140,000 – $170,000 CAD",
 }
 
 
@@ -172,6 +176,61 @@ def _click_submit(page):
 
 
 # ---------------------------------------------------------------------------
+# Custom question filler — matches label text to known answers
+# ---------------------------------------------------------------------------
+
+def fill_custom_questions(page):
+    """
+    Fill open-ended and dropdown questions by matching their label text to
+    keyword patterns. Runs after standard fields so it won't overwrite them.
+    """
+    # Text / textarea rules: (regex pattern, answer)
+    text_rules = [
+        (r"country.*live|currently live|where.*live|where.*based", MICHAEL["country"]),
+        (r"linkedin",                                               MICHAEL["linkedin"]),
+        (r"salary|compensation|pay|remuneration",                   MICHAEL["salary"]),
+    ]
+
+    for pattern, value in text_rules:
+        if not value:
+            continue
+        try:
+            el = page.get_by_label(re.compile(pattern, re.IGNORECASE)).first
+            if not el.count():
+                continue
+            try:
+                if el.input_value():
+                    continue  # already filled by standard field logic
+            except Exception:
+                pass
+            el.fill(value)
+            print(f"  Custom field filled ({pattern})")
+        except Exception:
+            pass
+
+    # Dropdown / select rules: (regex pattern, option to select)
+    select_rules = [
+        (r"remote.*first|comfortable.*remote|remote.*company", MICHAEL["remote_ok"]),
+        (r"visa.*sponsor|sponsor.*visa|need.*sponsor",         MICHAEL["visa_sponsor"]),
+    ]
+
+    for pattern, value in select_rules:
+        try:
+            el = page.get_by_label(re.compile(pattern, re.IGNORECASE)).first
+            if not el.count():
+                continue
+            for opt in [value, value.lower(), value.upper()]:
+                try:
+                    el.select_option(label=opt)
+                    print(f"  Dropdown set ({pattern} → {value})")
+                    break
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+
+# ---------------------------------------------------------------------------
 # Greenhouse
 # ---------------------------------------------------------------------------
 
@@ -228,6 +287,8 @@ def fill_greenhouse(page, url: str, resume_pdf: Path, cover_letter_md: Path, dry
                     break
             except Exception:
                 pass
+
+    fill_custom_questions(page)
 
     if not dry_run:
         _click_submit(page)
@@ -295,6 +356,8 @@ def fill_lever(page, url: str, resume_pdf: Path, cover_letter_md: Path, dry_run:
             pass
     if not cl_filled:
         print("  No dedicated cover letter field found — skipping (paste manually if needed)")
+
+    fill_custom_questions(page)
 
     if not dry_run:
         _click_submit(page)
