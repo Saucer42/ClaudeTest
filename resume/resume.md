@@ -15,22 +15,6 @@ Leader of a 7-person distributed data team responsible for migration modernizati
 
 ---
 
-## Core Competencies
-
-- SQL Server (T-SQL)
-- Data Migration Architecture
-- Reporting & Analytics
-- Metadata-Driven ETL
-- Dynamic SQL Automation
-- WebFOCUS
-- Kimball Methodology
-- Fabric / Synapse
-- AI-Augmented Workflow Design
-- Leadership & Team Development
-- Public Speaking & Executive Communication
-
----
-
 ## Professional Experience
 
 ### VitalHub Corp.
@@ -78,6 +62,22 @@ Leader of a 7-person distributed data team responsible for migration modernizati
 #### Financial Advisor / Senior Financial Advisor (2015 – 2018)
 
 - Exceeded sales targets and led growth initiatives
+
+---
+
+## Core Competencies
+
+- SQL Server (T-SQL)
+- Data Migration Architecture
+- Reporting & Analytics
+- Metadata-Driven ETL
+- Dynamic SQL Automation
+- WebFOCUS
+- Kimball Methodology
+- Fabric / Synapse
+- AI-Augmented Workflow Design
+- Leadership & Team Development
+- Public Speaking & Executive Communication
 
 ---
 

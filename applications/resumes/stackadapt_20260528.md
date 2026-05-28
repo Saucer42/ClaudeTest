@@ -13,32 +13,6 @@ Led a 7-person distributed data team delivering mission-critical data systems ac
 
 ---
 
-## Core Competencies
-
-**AI & Systems**
-- LLM Integration & Prompt Engineering
-- AI-Augmented Workflow Design
-- Knowledge Management Systems
-- AI Governance in Regulated Environments
-- Metadata-Driven Architecture
-- Dynamic SQL Automation
-
-**Data Engineering & Infrastructure**
-- SQL Server (T-SQL) — Expert
-- ETL / Data Pipeline Design
-- Data Migration Architecture
-- Kimball Methodology
-- Microsoft Fabric / Azure Synapse
-- Mirth Connect (HL7/FHIR integration)
-
-**Leadership & Delivery**
-- Distributed Team Management (domestic + offshore)
-- Executive & Client Communication
-- Cross-Functional Stakeholder Alignment
-- Agile Project Delivery
-
----
-
 ## Professional Experience
 
 ### VitalHub Corp.
@@ -100,6 +74,32 @@ Led a 7-person distributed data team delivering mission-critical data systems ac
 #### Senior Financial Advisor (2015 – 2018)
 
 - Consistently exceeded sales targets; led branch growth and client portfolio initiatives
+
+---
+
+## Core Competencies
+
+**AI & Systems**
+- LLM Integration & Prompt Engineering
+- AI-Augmented Workflow Design
+- Knowledge Management Systems
+- AI Governance in Regulated Environments
+- Metadata-Driven Architecture
+- Dynamic SQL Automation
+
+**Data Engineering & Infrastructure**
+- SQL Server (T-SQL) — Expert
+- ETL / Data Pipeline Design
+- Data Migration Architecture
+- Kimball Methodology
+- Microsoft Fabric / Azure Synapse
+- Mirth Connect (HL7/FHIR integration)
+
+**Leadership & Delivery**
+- Distributed Team Management (domestic + offshore)
+- Executive & Client Communication
+- Cross-Functional Stakeholder Alignment
+- Agile Project Delivery
 
 ---
 
