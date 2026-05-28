@@ -28,7 +28,7 @@
 
 | Company | Role | Job URL | Source | Priority | Notes |
 |---|---|---|---|---|---|
-| StackAdapt | Manager, Performance Services | [Greenhouse](https://job-boards.greenhouse.io/stackadapt/jobs/4048485009) | Manual search | High | Resume tailored. DSP experience gap — address in cover letter. Remote Canada/US. |
+| | | | | | |
 
 ---
 
