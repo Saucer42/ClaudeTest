@@ -20,7 +20,7 @@ Leader of a 7-person distributed data team responsible for migration modernizati
 ### VitalHub Corp.
 #### Director, Reporting, Analytics & Technical Implementation (May 2026 – Present)
 
-- Promoted to Director overseeing cross-functional reporting, analytics, and technical implementation strategy across 25+ client organizations
+- Promoted to Director overseeing cross-functional reporting, analytics, and technical implementation strategy across over 100 organizations across 4 product lines
 
 #### Manager, Data Integration & Reporting Solutions (May 2024 – May 2026)
 
@@ -32,7 +32,7 @@ Leader of a 7-person distributed data team responsible for migration modernizati
 - Delivered 100+ operational, ministry, and financial reports
 - Increased migration revenue by 40%
 - Speaker at VitalHub Case Management Summit
-- Designed and deployed a structured internal knowledge base integrating LLM tooling to accelerate onboarding, reduce repeated research effort, and standardize team outputs across 25+ client organizations
+- Designed and deployed a structured internal knowledge base integrating LLM tooling to accelerate onboarding, reduce repeated research effort, and standardize team outputs across over 100 organizations across 4 product lines
 - Built reusable AI-assisted workflows for SQL generation, reporting documentation, and client deliverable production, reducing per-task effort and improving consistency at scale
 - Established prompt engineering standards and AI tooling governance to ensure team-wide adoption of AI productivity tooling within a regulated healthcare context
 

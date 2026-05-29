@@ -18,12 +18,12 @@ Led a 7-person distributed data team delivering mission-critical data systems ac
 ### VitalHub Corp.
 #### Director, Reporting, Analytics & Technical Implementation (May 2026 – Present)
 
-- Promoted to Director overseeing cross-functional reporting, analytics, and technical implementation strategy across 25+ client organizations
+- Promoted to Director overseeing cross-functional reporting, analytics, and technical implementation strategy across over 100 organizations across 4 product lines
 
 #### Manager, Data Integration & Reporting Solutions (May 2024 – May 2026)
 
 **AI Systems & Tooling**
-- Designed and deployed a structured internal knowledge base integrating LLM tooling to accelerate onboarding, eliminate repeated research effort, and standardize outputs across a 7-person team serving 25+ client organizations
+- Designed and deployed a structured internal knowledge base integrating LLM tooling to accelerate onboarding, eliminate repeated research effort, and standardize outputs across a 7-person team serving over 100 organizations across 4 product lines
 - Built reusable AI-assisted workflows for SQL generation, reporting documentation, and client deliverable production — reducing per-task effort and improving consistency at scale
 - Established prompt engineering standards and AI tooling governance ensuring team-wide adoption within a regulated healthcare context, balancing productivity gains with data sensitivity requirements
 - Architected AI-augmented processes spanning the full delivery lifecycle: intake, analysis, SQL development, QA, and documentation — enabling junior team members to operate at higher capability levels
